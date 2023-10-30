@@ -1,0 +1,175 @@
+import { Image, SafeAreaView, StatusBar, Text, TextInput, TouchableOpacity, View } from "react-native";
+import {MagnifyingGlassIcon} from "react-native-heroicons/outline"
+import {MapPinIcon} from "react-native-heroicons/solid"
+
+import { useState } from "react";
+
+export default function Homescreen(){
+
+    const [city, setCity] = useState("")
+    const [ locations, setLocations ] = useState([1,2,3])
+    const [viewLocations, setViewLocations] = useState(false)
+
+    const handleLocation = (loc) =>{
+        console.log("Location",loc)
+    }
+
+    return (
+        <View style={{flex:1, position:"relative"}}>
+            <StatusBar style="light" />
+            <Image 
+                source={require('../assets/images/bg.png')}
+                blurRadius={70}
+                style={{position:"absolute", height:"100%", width:"100%"}}
+            />
+            <SafeAreaView style={{display:"flex", flex:1, marginTop:5}}>
+                {/* search section */}
+                <View style={{height:20, marginHorizontal:10, position:"relative", zIndex:50}}>
+                    <View
+                        style={{
+                            flexDirection:"row",
+                            alignItems:"center",
+                            borderRadius:20,
+                            backgroundColor:'rgba(255, 255, 255, 0.301)',
+                        }}
+                    >
+                        <TextInput 
+                            placeholder="Search City" 
+                            placeholderTextColor="lightgray"
+                            value={city}
+                            onChangeText={setCity}
+                            style={{
+                                height: 40,
+                                flex:1,
+                                // margin: 12,
+                                // borderWidth: 1,
+                                padding: 10,
+                                // borderWidth: 2,
+                                // borderColor: "white",
+                                // borderRadius: 20,
+                                // textAlign:"center",
+                                // backgroundColor:'rgba(255, 255, 255, 0.301)',
+                                color:"white",
+                            }}
+                        />
+                        <TouchableOpacity style={{
+                            backgroundColor:'rgba(250, 250, 250, 0.158)',
+                            padding:7,
+                            borderRadius:50 
+                        }}
+                            onPress={()=>{}}
+                        >
+                            <MagnifyingGlassIcon 
+                                size={"25"}
+                                color={"white"}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+                {locations.length > 0 && viewLocations && (
+                    <View
+                        style={{
+                            position:"absolute",
+                            backgroundColor:'rgba(245, 245, 245, 0.945)',
+                            marginTop:50,
+                            alignSelf:"center",
+                            width:"95%",
+                            borderRadius: 30,
+                            zIndex:20
+                        }}
+                    >
+                        {locations.map((loc, index)=>{
+                            return (
+                                <TouchableOpacity key={index}
+                                    style={{
+                                         display:"flex",
+                                         flexDirection:"row",
+                                         padding: 20,
+                                         borderBottomWidth: index === locations.length -1 ? 0 :2,
+                                         borderBottomColor:'rgba(78, 78, 78, 0.671)',
+                                    }}
+                                    onPress={()=>handleLocation(loc)}
+                                >
+                                    <MapPinIcon size={"20"} color={"gray"}/>
+                                    <Text
+                                        style={{
+                                            marginLeft: 10,
+                                            fontSize:18
+                                        }}
+                                    >
+                                        London, United Kingdom
+                                    </Text>
+                                </TouchableOpacity>
+                            )
+                        })}
+                    </View>
+                )}
+
+                {/* forecast section */}
+                <View
+                    style={{
+                        display:"flex",
+                        flex:1,
+                        marginHorizontal: 20,
+                        marginBottom:2,
+                        justifyContent:"space-around"
+
+                    }}
+                >
+                    <Text style={{fontSize:30, textAlign:"center", color:"white", fontWeight:"bold"}} >
+                        London, 
+                        <Text
+                            style={{
+                                fontWeight:"normal",
+                                fontSize: 25
+                            }}
+                        >
+                            United Kingdom
+                        </Text>
+                    </Text>
+                    {/* Weather image */}
+                    <View
+                        style={{
+                            display:"flex",
+                            flexDirection:"row",
+                            justifyContent:"center"
+                        }}
+                    >
+                        <Image 
+                            source={require('../assets/images/partlycloudy.png')}
+                            style={{
+                                width:200,
+                                height: 200,
+                            }}
+                        />
+                    </View>
+                    {/* degree celcius */}
+                    <View>
+                        <Text
+                            style={{
+                                textAlign:"center",
+                                fontWeight:"bold",
+                                fontSize: 50,
+                                color:"white"
+                            }}
+                        >
+                            23&#176;
+                        </Text>
+                        <Text
+                            style={{
+                                textAlign:"center",
+                                fontWeight:"bold",
+                                fontSize: 20,
+                                color:"white",
+                                letterSpacing:1.5
+                            }}
+                        >
+                            Partly Cloudy
+                        </Text>
+                    </View>
+                </View>
+            </SafeAreaView>
+        </View>
+    )
+}
+
