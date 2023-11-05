@@ -1,5 +1,5 @@
-import { Image, SafeAreaView, StatusBar, Text, TextInput, TouchableOpacity, View, StyleSheet } from "react-native";
-import {MagnifyingGlassIcon} from "react-native-heroicons/outline"
+import { Image, SafeAreaView, StatusBar, Text, TextInput, TouchableOpacity, View, StyleSheet, ScrollView } from "react-native";
+import {CalendarDaysIcon, MagnifyingGlassIcon} from "react-native-heroicons/outline"
 import {MapPinIcon} from "react-native-heroicons/solid"
 
 import { useState } from "react";
@@ -190,6 +190,75 @@ export default function Homescreen(){
                             <Text style={{color:"white", fontWeight:"500"}}> 6.05 AM</Text>
                         </View>
                     </View>
+
+
+                    {/* Next day forecast */}
+                    <View style={{marginBottom:5, paddingHorizontal:5}}>
+                        <View style={{flexDirection:"row", alignItems:"center", marginHorizontal:5}}>
+                            <CalendarDaysIcon size="22" color={'white'}/>
+                            <Text style={{color:"white", marginLeft:4}}>Daily Forecast</Text>
+                        </View>
+                        <ScrollView
+                            horizontal
+                            // contentContainerStyle={{paddingHorizontal:15}}
+                            showsHorizontalScrollIndicator={false}
+                        >
+                            <View style={styles.forecastItem}>
+                                <Image source={require('../assets/images/heavyrain.png')} style={{width:40, height:40}} />
+                                <Text style={{color:"white"}}>
+                                    Monday
+                                </Text>
+                                <Text style={{color:"white"}}>
+                                    23&#176;
+                                </Text>
+                            </View>
+                            <View style={styles.forecastItem}>
+                                <Image source={require('../assets/images/heavyrain.png')} style={{width:40, height:40}} />
+                                <Text style={{color:"white"}}>
+                                    Tuesday
+                                </Text>
+                                <Text style={{color:"white"}}>
+                                    23&#176;
+                                </Text>
+                            </View>
+                            <View style={styles.forecastItem}>
+                                <Image source={require('../assets/images/heavyrain.png')} style={{width:40, height:40}} />
+                                <Text style={{color:"white"}}>
+                                    Wenesday
+                                </Text>
+                                <Text style={{color:"white"}}>
+                                    23&#176;
+                                </Text>
+                            </View>
+                            <View style={styles.forecastItem}>
+                                <Image source={require('../assets/images/heavyrain.png')} style={{width:40, height:40}} />
+                                <Text style={{color:"white"}}>
+                                    Thursday
+                                </Text>
+                                <Text style={{color:"white"}}>
+                                    23&#176;
+                                </Text>
+                            </View>
+                            <View style={styles.forecastItem}>
+                                <Image source={require('../assets/images/heavyrain.png')} style={{width:40, height:40}} />
+                                <Text style={{color:"white"}}>
+                                    Friday
+                                </Text>
+                                <Text style={{color:"white"}}>
+                                    23&#176;
+                                </Text>
+                            </View>
+                            <View style={styles.forecastItem}>
+                                <Image source={require('../assets/images/heavyrain.png')} style={{width:40, height:40}} />
+                                <Text style={{color:"white"}}>
+                                    Saturday
+                                </Text>
+                                <Text style={{color:"white"}}>
+                                    23&#176;
+                                </Text>
+                            </View>
+                        </ScrollView>
+                    </View>
                 </View>
             </SafeAreaView>
         </View>
@@ -209,5 +278,15 @@ const styles = StyleSheet.create({
     bottomIconContainer:{
         flexDirection:"row",
         alignItems:"center"
+    },
+    forecastItem:{
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+        borderRadius:10,
+        padding: 20,
+        marginTop: 10,
+        marginRight: 5,
+        backgroundColor:'rgba(255, 255, 255, 0.384)' 
     }
 })
