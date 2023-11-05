@@ -1,4 +1,4 @@
-import { Image, SafeAreaView, StatusBar, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, SafeAreaView, StatusBar, Text, TextInput, TouchableOpacity, View, StyleSheet } from "react-native";
 import {MagnifyingGlassIcon} from "react-native-heroicons/outline"
 import {MapPinIcon} from "react-native-heroicons/solid"
 
@@ -167,9 +167,47 @@ export default function Homescreen(){
                             Partly Cloudy
                         </Text>
                     </View>
+
+                    {/* Other info */}
+                    <View
+                        style={{
+                            display:"flex",
+                            flexDirection:"row",
+                            justifyContent:"space-between",
+                            marginHorizontal: 5
+                        }}
+                    >
+                        <View style={styles.bottomIconContainer}>
+                            <Image  source={require("../assets/icons/wind.png")} style={styles.bottomIcon}/>
+                            <Text style={{color:"white", fontWeight:"500"}}> 22km</Text>
+                        </View>
+                        <View style={styles.bottomIconContainer}>
+                            <Image  source={require("../assets/icons/drop.png")} style={styles.bottomIcon}/>
+                            <Text style={{color:"white", fontWeight:"500"}}> 23%</Text>
+                        </View>
+                        <View style={styles.bottomIconContainer}>
+                            <Image  source={require("../assets/icons/sun.png")} style={styles.bottomIcon}/>
+                            <Text style={{color:"white", fontWeight:"500"}}> 6.05 AM</Text>
+                        </View>
+                    </View>
                 </View>
             </SafeAreaView>
         </View>
     )
 }
 
+const styles = StyleSheet.create({
+    bottomIcon:{
+        height:20,
+        width: 20,
+        marginLeft: 3
+    },
+    bottomText:{
+        color:"white", 
+        fontWeight:"500"
+    },
+    bottomIconContainer:{
+        flexDirection:"row",
+        alignItems:"center"
+    }
+})
