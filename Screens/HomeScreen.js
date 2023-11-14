@@ -41,14 +41,7 @@ export default function Homescreen(){
                             style={{
                                 height: 40,
                                 flex:1,
-                                // margin: 12,
-                                // borderWidth: 1,
                                 padding: 10,
-                                // borderWidth: 2,
-                                // borderColor: "white",
-                                // borderRadius: 20,
-                                // textAlign:"center",
-                                // backgroundColor:'rgba(255, 255, 255, 0.301)',
                                 color:"white",
                             }}
                         />
